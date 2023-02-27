@@ -1,0 +1,42 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="finalproject.mapper.EdgeMapper">
+
+    <resultMap id="Base_Map" type="finalproject.entity.Edge">
+        <id property="id" column="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="desc" jdbcType="VARCHAR" property="desc" />
+        <result column="create_time" jdbcType="DATE" property="createTime" />
+        <result column="update_time" jdbcType="DATE" property="updateTime" />
+    </resultMap>
+    <select id="listEdge" resultMap="Base_Map">
+        SELECT *
+        FROM `edge`
+        ORDER BY create_time DESC
+    </select>
+    <select id="getById" resultMap="Base_Map">
+        SELECT *
+        FROM `edge`
+        WHERE id=#{id}
+    </select>
+    <insert id="create" parameterType="finalproject.entity.Edge" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `edge`
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name!=null">
+                `name`,
+            </if>
+            <if test="desc!=null">
+                `desc`,
+            </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name!=null">
+                #{name},
+            </if>
+            <if test="desc!=null">
+                #{desc},
+            </if>
+        </trim>
+    </insert>
+</mapper>

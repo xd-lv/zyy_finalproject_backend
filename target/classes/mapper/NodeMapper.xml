@@ -1,0 +1,33 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="finalproject.mapper.NodeMapper">
+
+    <resultMap id="Base_Map" type="finalproject.entity.Node">
+        <id property="id" column="id"/>
+        <result column="edge_id" jdbcType="INTEGER" property="edgeId" />
+        <result column="node_name" jdbcType="VARCHAR" property="nodeName" />
+        <result column="desc" jdbcType="VARCHAR" property="desc" />
+        <result column="desc" jdbcType="VARCHAR" property="desc" />
+        <result column="gpu" jdbcType="INTEGER" property="gpu" />
+        <result column="status" jdbcType="INTEGER" property="status" />
+        <result column="memory" jdbcType="INTEGER" property="memory" />
+        <result column="network_method" jdbcType="INTEGER" property="networkMethod" />
+        <result column="cpu" jdbcType="INTEGER" property="cpu" />
+        <result column="is_sys" jdbcType="INTEGER" property="isSys" />
+        <result column="device_type" jdbcType="INTEGER" property="deviceType" />
+        <result column="mac" jdbcType="VARCHAR" property="mac" />
+        <result column="is_authorize" jdbcType="INTEGER" property="isAuthorize" />
+        <result column="create_time" jdbcType="DATE" property="createTime" />
+        <result column="update_time" jdbcType="DATE" property="updateTime" />
+    </resultMap>
+    <select id="listNode" resultMap="Base_Map">
+        SELECT *
+        FROM `node`
+        ORDER BY create_time DESC
+    </select>
+    <select id="countNodeByEdge" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM `node`
+        WHERE edge_id=#{id}
+    </select>
+</mapper>

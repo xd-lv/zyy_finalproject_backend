@@ -1,0 +1,29 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="finalproject.mapper.DeviceMapper">
+
+    <resultMap id="Base_Map" type="finalproject.entity.Device">
+        <id property="id" column="id"/>
+        <result column="edge_id" jdbcType="INTEGER" property="edgeId" />
+        <result column="device_name" jdbcType="VARCHAR" property="deviceName" />
+        <result column="desc" jdbcType="VARCHAR" property="desc" />
+        <result column="is_sys" jdbcType="INTEGER" property="isSys" />
+        <result column="status" jdbcType="INTEGER" property="status" />
+        <result column="device_type" jdbcType="INTEGER" property="deviceType" />
+        <result column="category_name" jdbcType="VARCHAR" property="categoryName" />
+        <result column="network_method" jdbcType="INTEGER" property="networkMethod" />
+        <result column="is_authorize" jdbcType="INTEGER" property="isAuthorize" />
+        <result column="create_time" jdbcType="DATE" property="createTime" />
+        <result column="update_time" jdbcType="DATE" property="updateTime" />
+    </resultMap>
+    <select id="listDevice" resultMap="Base_Map">
+        SELECT *
+        FROM `device`
+        ORDER BY create_time DESC
+    </select>
+    <select id="countDeviceByEdge" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM `device`
+        WHERE edge_id=#{id}
+    </select>
+</mapper>

@@ -1,0 +1,27 @@
+spring:
+  main:
+    allow-circular-references: true
+  servlet:
+    multipart:
+      max-file-size: 102400MB
+      max-request-size: 102400MB
+
+# oss setting
+#minio:
+#  endpoint: http://116.204.74.71:9090/ # MinIO service address
+#  accessKey: root # key
+#  secretKey: root123456 # secret
+
+#argo-minio:
+#  endpoint: http://116.204.74.71:9090/ # MinIO service address
+#  accessKey: root # key
+#  secretKey: root123456 # secret
+#  bucketName: my-bucket
+
+# template file path
+#project-config:
+#  placeholder: doc/.placeholder
+
+# argo setting
+#argo:
+#  baseURL: https://10.112.39.240:30080

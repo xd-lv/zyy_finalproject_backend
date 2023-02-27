@@ -1,0 +1,160 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="finalproject.mapper.PropertiesMapper">
+
+    <resultMap id="Base_Map" type="finalproject.entity.Properties">
+        <id property="id" column="id"/>
+        <result column="node_id" jdbcType="INTEGER" property="nodeId" />
+        <result column="mac" jdbcType="VARCHAR" property="mac" />
+        <result column="protocol" jdbcType="VARCHAR" property="protocol" />
+        <result column="device_id" jdbcType="VARCHAR" property="deviceId" />
+        <result column="manufacturer" jdbcType="VARCHAR" property="manufacturer" />
+        <result column="service_path" jdbcType="VARCHAR" property="servicePath" />
+        <result column="ip" jdbcType="VARCHAR" property="ip" />
+        <result column="online_range" jdbcType="VARCHAR" property="onlineRange" />
+        <result column="last_range" jdbcType="VARCHAR" property="lastRange" />
+        <result column="department" jdbcType="VARCHAR" property="department" />
+        <result column="manager" jdbcType="VARCHAR" property="manager" />
+        <result column="authority_time" jdbcType="VARCHAR" property="authorityTime" />
+        <result column="authority_level" jdbcType="VARCHAR" property="authorityLevel" />
+        <result column="create_time" jdbcType="DATE" property="createTime" />
+        <result column="update_time" jdbcType="DATE" property="updateTime" />
+    </resultMap>
+    <select id="getById" resultMap="Base_Map">
+        SELECT *
+        FROM `properties`
+        WHERE id=#{id}
+    </select>
+    <insert id="add" parameterType="finalproject.entity.Properties" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `dataset`
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="nodeId!=null">
+                `node_id`,
+            </if>
+            <if test="mac!=null">
+                `mac`,
+            </if>
+            <if test="protocol!=null">
+                `protocol`,
+            </if>
+            <if test="deviceId!=null">
+                `device_id`,
+            </if>
+            <if test="manufacturer!=null">
+                `manufacturer`,
+            </if>
+            <if test="servicePath!=null">
+                `service_path`,
+            </if>
+            <if test="ip!=null">
+                `ip`,
+            </if>
+            <if test="onlineRange!=null">
+                `online_range`,
+            </if>
+            <if test="lastRange!=null">
+                `last_range`,
+            </if>
+            <if test="department!=null">
+                `department`,
+            </if>
+            <if test="manager!=null">
+                `manager`,
+            </if>
+            <if test="authorityTime!=null">
+                `authority_time`,
+            </if>
+            <if test="authorityLevel!=null">
+                `authority_level`,
+            </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="nodeId!=null">
+                #{nodeId},
+            </if>
+            <if test="mac!=null">
+                #{mac},
+            </if>
+            <if test="protocol!=null">
+                #{protocol},
+            </if>
+            <if test="deviceId!=null">
+                #{deviceId},
+            </if>
+            <if test="manufacturer!=null">
+                #{manufacturer},
+            </if>
+            <if test="servicePath!=null">
+                #{servicePath},
+            </if>
+            <if test="ip!=null">
+                #{ip},
+            </if>
+            <if test="onlineRange!=null">
+                #{onlineRange},
+            </if>
+            <if test="lastRange!=null">
+                #{lastRange},
+            </if>
+            <if test="department!=null">
+                #{department},
+            </if>
+            <if test="manager!=null">
+                #{manager},
+            </if>
+            <if test="authorityTime!=null">
+                #{authorityTime},
+            </if>
+            <if test="authorityLevel!=null">
+                #{authorityLevel},
+            </if>
+        </trim>
+    </insert>
+    <update id="update" parameterType="finalproject.entity.Properties">
+        UPDATE `dataset`
+        SET
+        <trim suffixOverrides=",">
+            <if test="nodeId!=null">
+                `node_id`=#{nodeId},
+            </if>
+            <if test="mac!=null">
+                `mac`=#{mac},
+            </if>
+            <if test="protocol!=null">
+                `protocol`=#{protocol},
+            </if>
+            <if test="deviceId!=null">
+                `device_id`=#{deviceId},
+            </if>
+            <if test="manufacturer!=null">
+                `manufacturer`=#{manufacturer},
+            </if>
+            <if test="servicePath!=null">
+                `service_path`=#{servicePath},
+            </if>
+            <if test="ip!=null">
+                `ip`=#{ip},
+            </if>
+            <if test="onlineRange!=null">
+                `online_range`=#{onlineRange},
+            </if>
+            <if test="lastRange!=null">
+                `last_range`=#{lastRange},
+            </if>
+            <if test="department!=null">
+                `department`=#{department},
+            </if>
+            <if test="manager!=null">
+                `manager`=#{manager},
+            </if>
+            <if test="authorityTime!=null">
+                `authority_time`=#{authorityTime},
+            </if>
+            <if test="authorityLevel!=null">
+                `authority_level`=#{authorityLevel},
+            </if>
+        </trim>
+        where id = #{id}
+    </update>
+</mapper>
