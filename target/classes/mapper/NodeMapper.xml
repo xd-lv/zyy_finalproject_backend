@@ -30,4 +30,74 @@
         FROM `node`
         WHERE edge_id=#{id}
     </select>
+    <insert id="create" parameterType="finalproject.entity.Node" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `node`
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="nodeName!=null">
+                `node_name`,
+            </if>
+            <if test="desc!=null">
+                `desc`,
+            </if>
+            <if test="edgeId!=null">
+                `edge_id`,
+            </if>
+            <if test="networkMethod!=null">
+                `network_method`,
+            </if>
+            <if test="mac!=null">
+                `mac`,
+            </if>
+            <if test="cpu!=null">
+                `cpu`,
+            </if>
+            <if test="gpu!=null">
+                `gpu`,
+            </if>
+            <if test="memory!=null">
+                `memory`,
+            </if>
+            <if test="status!=null">
+                `status`,
+            </if>
+
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="nodeName!=null">
+                #{nodeName},
+            </if>
+            <if test="desc!=null">
+                #{desc},
+            </if>
+            <if test="edgeId!=null">
+                #{edgeId},
+            </if>
+            <if test="networkMethod!=null">
+                #{networkMethod},
+            </if>
+            <if test="mac!=null">
+                #{mac},
+            </if>
+            <if test="cpu!=null">
+                #{cpu},
+            </if>
+            <if test="gpu!=null">
+                #{gpu},
+            </if>
+            <if test="memory!=null">
+                #{memory},
+            </if>
+            <if test="status!=null">
+                #{status},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateNode" parameterType="finalproject.entity.Node">
+        update node
+        <trim prefix="set" suffixOverrides=",">
+            <if test="status!=null"> status=#{status},</if>
+        </trim>
+        where id=#{id};
+    </update>
 </mapper>

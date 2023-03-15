@@ -13,6 +13,7 @@ public class PropertiesController {
     @Autowired
     private PropertiesService propertiesService;
 
+    @CrossOrigin(origins = "http://localhost:9528")
     @PostMapping("/add")
     private Result add(@RequestBody Properties properties) {
         try {
@@ -23,6 +24,7 @@ public class PropertiesController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:9528")
     @GetMapping("/getById")
     private Result getById(Integer id) {
         try {
@@ -32,7 +34,7 @@ public class PropertiesController {
             return Result.buildError(e.toString());
         }
     }
-
+    @CrossOrigin(origins = "http://localhost:9528")
     @PutMapping("/update")
     private Result update(@RequestBody Properties properties) {
         try {

@@ -58,4 +58,14 @@ public class ClusterServiceImpl implements ClusterService {
     public Result createEdge(Edge edge) {
         return edgeMapper.create(edge) > 0 ? Result.buildSuccess() : Result.buildError();
     }
+
+    @Override
+    public Result createNode(Node node) {
+        return nodeMapper.create(node) > 0 ? Result.buildSuccess() : Result.buildError();
+    }
+
+    @Override
+    public Result updateNode(Node node) {
+        return nodeMapper.updateNode(node) > 0? Result.buildSuccess() : Result.buildError();
+    }
 }
