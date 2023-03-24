@@ -18,7 +18,6 @@ public class ClusterController {
     @Autowired
     private ClusterService clusterService;
 
-
     @CrossOrigin(origins = "http://localhost:9528")
     @GetMapping("/listEdge")
     private Result listEdge() {
@@ -59,6 +58,7 @@ public class ClusterController {
     private Result createNode(@RequestBody Node node) {
         try{
             node.setStatus(1);
+            node.setCreateTime(new Timestamp(System.currentTimeMillis()));
             Result res = clusterService.createNode(node);
             return res;
         } catch(Exception e) {

@@ -1,0 +1,27 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="finalproject.mapper.ServiceMapper">
+    <resultMap id="Base_Map" type="finalproject.entity.Service">
+        <id property="id" column="id"/>
+        <result column="model_service_id" jdbcType="INTEGER" property="modelServiceId" />
+        <result column="model_service_name" jdbcType="VARCHAR" property="modelServiceName" />
+        <result column="model_service_desc" jdbcType="VARCHAR" property="modelServiceDesc" />
+        <result column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="model_id" jdbcType="INTEGER" property="modelId" />
+        <result column="create_time" jdbcType="DATE" property="createTime" />
+        <result column="update_time" jdbcType="DATE" property="updateTime" />
+        <result column="state" jdbcType="INTEGER" property="state" />
+        <result column="replicas" jdbcType="INTEGER" property="replicas" />
+        <result column="resource_cpu" jdbcType="VARCHAR" property="resourceCpu" />
+        <result column="resource_gpu" jdbcType="VARCHAR" property="resourceGpu" />
+        <result column="resource_mem" jdbcType="VARCHAR" property="resourceMem" />
+        <result column="hostname" jdbcType="VARCHAR" property="hostname" />
+        <result column="path" jdbcType="VARCHAR" property="path" />
+        <result column="argo_workflow_name" jdbcType="VARCHAR" property="argoWorkflowName" />
+        <result column="call_example" jdbcType="VARCHAR" property="callExample" />
+    </resultMap>
+    <select id="listModelService" resultMap="Base_Map">
+        SELECT *
+        FROM `general_model_service`
+        ORDER BY create_time DESC
+    </select>
+</mapper>

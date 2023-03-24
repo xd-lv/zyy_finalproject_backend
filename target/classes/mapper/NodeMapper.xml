@@ -60,6 +60,9 @@
             <if test="status!=null">
                 `status`,
             </if>
+            <if test="createTime != null">
+                `create_time`,
+            </if>
 
         </trim>
         VALUES
@@ -90,6 +93,9 @@
             </if>
             <if test="status!=null">
                 #{status},
+            </if>
+            <if test="createTime != null">
+                #{createTime}
             </if>
         </trim>
     </insert>

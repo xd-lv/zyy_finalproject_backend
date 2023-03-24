@@ -2,6 +2,7 @@ package finalproject.entity;
 
 import lombok.Data;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Data
@@ -34,7 +35,7 @@ public class Node {
     /** 是否启用授权码（0-否，1-是） */
     private Integer isAuthorize;
 
-    private Date createTime;
-    private Date updateTime;
+    private Timestamp createTime;
+    private Timestamp updateTime;
 
 }
